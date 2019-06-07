@@ -4,12 +4,8 @@ const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
-const matchRoutes = require('./api/routes/matches');
+const reportRoutes = require('./api/routes/reports');
 const userRoutes = require('./api/routes/user');
-
-mongoose.connect('mongodb+srv://dondyprax:' + process.env.MONGO_ATLAS_PW + '@parcialpdm-2pguk.mongodb.net/test?retryWrites=true&w=majority', {
-    useNewUrlParser: true
-});
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
@@ -27,7 +23,7 @@ app.use((req, res, next) => {
     next();
 })
 
-app.use('/matches', matchRoutes);
+app.use('/reports', reportRoutes);
 app.use('/user', userRoutes);
 
 app.use((req, res, next) => {

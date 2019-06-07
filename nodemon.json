@@ -1,7 +1,7 @@
 
 {
     "env": {
-        "MONGO_ATLAS_PW": "d3ntyn3",
-        "JWT_KEY": "parcialPDM"
+        "MONGO_ATLAS_PW": "",
+        "JWT_KEY": "proyectoPDM"
     }
 }
