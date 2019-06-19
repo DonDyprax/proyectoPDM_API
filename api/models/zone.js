@@ -5,7 +5,7 @@ const zoneSchema = new mongoose.Schema({
     name: String,
     arrayLat: [{type: String}],
     arrayLng: [{type: String}],
-    edifice: Number,
+    building: Number,
     level: Number
 });
 
