@@ -6,6 +6,29 @@ const mongoose = require('mongoose')
 
 const reportRoutes = require('./api/routes/reports');
 const userRoutes = require('./api/routes/user');
+const roleRoutes = require('./api/routes/roles');
+const zoneRoutes = require('./api/routes/zones');
+
+//mongoose.Promise = global.Promise;
+
+//mongodb://localhost/conia
+
+//mongodb+srv://conia:conia123@cluster0-mgdsl.mongodb.net/conia?retryWrites=true
+
+mongoose.connect('mongodb://localhost/safeUCA',
+    {
+        useNewUrlParser:true,
+        useCreateIndex: true,
+    }).then(()=>{
+
+  console.log("Base de datos conectada");
+
+}).catch((err)=>{
+
+  console.log(err,"No se puedo conectar a la base");
+
+})
+
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
@@ -23,6 +46,8 @@ app.use((req, res, next) => {
     next();
 })
 
+app.use('/zones', zoneRoutes);
+app.use('/roles', roleRoutes);
 app.use('/reports', reportRoutes);
 app.use('/user', userRoutes);
 

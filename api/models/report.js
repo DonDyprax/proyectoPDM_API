@@ -1,13 +1,18 @@
 const mongoose = require('mongoose');
 
-const reportSchema = mongoose.Schema({
+const reportSchema = new mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
-    title: String,
-    gravity: Number,
+    name: String,
+    danger: Number,
     type: String,
-    state: Number,
-    userEmail: String,
-    description: String
+    status: String,
+    mailUser: String,
+    description: String,
+    lat: Number,
+    ltn: Number,
+    idZone: {type: mongoose.Schema.Types.ObjectId, ref:"Zone"},
+    level: Number,
+    image: String
 });
 
 module.exports = mongoose.model('Report', reportSchema);

@@ -1,9 +1,8 @@
-const mongoose = require('mongoose')
-const Report = require("../models/report");
+const mongoose = require('mongoose');
+const Role = require('../models/role');
 
-exports.reports_get_all = (req, res, next) => {
-    Report.find()
-    .populate('idZone')
+exports.roles_get_all = (req, res, next) => {
+    Role.find()
     .exec()
     .then(docs => {
         console.log(docs);
@@ -24,28 +23,20 @@ exports.reports_get_all = (req, res, next) => {
     });
 };
 
-exports.reports_create_report = (req, res, next) => {
-    const Report = new Report({
+exports.roles_create_role = (req, res, next) => {
+
+    const newRole = new Role({
         _id: new mongoose.Types.ObjectId(),
-        name: req.body.name,
-        danger: req.body.danger,
-        type: req.body.type,
-        status: req.body.status,
-        mailUser: req.body.mailUser,
-        description: req.body.description,
-        lat: req.body.lat,
-        ltn: req.body.ltn,
-        idZone: req.body.idZone,
-        level: req.body.level,
-        image: req.body.image
+        rol: req.body.rol
     });
-    Report
+
+    newRole
         .save()
         .then(result => {
             console.log(result);
             res.status(200).json({
-                message: 'Handling POST request to /reportes',
-                createdReport: result
+                message: 'Handling POST request to /roles',
+                createdRole: result
             });
         })
         .catch(err => {
@@ -57,9 +48,9 @@ exports.reports_create_report = (req, res, next) => {
     
 };
 
-exports.reports_get_report = (req, res, next) => {
-    const id = req.params.reportId
-    Report.findById(id)
+exports.roles_get_role = (req, res, next) => {
+    const id = req.params.roleId
+    Role.findById(id)
     .exec()
     .then(doc => {
         console.log(doc);
@@ -67,7 +58,7 @@ exports.reports_get_report = (req, res, next) => {
             res.status(200).json(doc);
         } else {
             res.status(404).json({
-                message: "Report not found for provided ID"
+                message: "Role not found for provided ID"
             })
         } 
     })
@@ -77,9 +68,9 @@ exports.reports_get_report = (req, res, next) => {
     });
 };
 
-exports.reports_delete_report = (req, res, next) => {
-    const id = req.body.reportId;
-    Report.remove({_id: id})
+exports.roles_delete_role = (req, res, next) => {
+    const id = req.body.roleId;
+    Role.remove({_id: id})
         .exec()
         .then(result => {
             res.status(200).json(result);

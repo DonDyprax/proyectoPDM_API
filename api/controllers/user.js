@@ -4,8 +4,31 @@ const jwt = require('jsonwebtoken');
 
 const User = require('../models/user');
 
+exports.user_get_all = (req, res,next) => {
+    User.find()
+    .populate('idRol')
+    .exec()
+    .then(docs => {
+        console.log(docs);
+        if(docs.length > 0) {
+            res.status(200).json(docs);
+        } else {
+            res.status(404).json({
+                message: "No entries found"
+            });
+        }
+        
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+        });
+    });
+};
+
 exports.user_signup = (req, res, next) => {
-    User.find({email: req.body.email})
+    User.find({mail: req.body.mail})
     .exec()
     .then(user => {
         if(user.length >= 1) {
@@ -23,10 +46,9 @@ exports.user_signup = (req, res, next) => {
                         _id: new mongoose.Types.ObjectId(),
                         name: req.body.name,
                         password: hash,
-                        sex: req.body.sex,
-                        email: req.body.email,
-                        role: req.body.role,
-                        reports: []
+                        gender: req.body.gender,
+                        mail: req.body.mail,
+                        idRol: req.body.idRol
                     });
                     user.save()
                     .then(result => {
