@@ -30,8 +30,8 @@ exports.zones_create_zone = (req, res, next) => {
     const newZone = new Zone({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
-        arrayLat: arrayLatitud,
-        arrayLng: arrayLongitud,
+        arrayLat: req.body.latitud,
+        arrayLng: req.body.longitud,
         building: req.body.building,
         level: req.body.level
     });
