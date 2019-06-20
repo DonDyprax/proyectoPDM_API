@@ -27,7 +27,7 @@ exports.zones_create_zone = (req, res, next) => {
     //var arrayLatitud = req.body.latitud.split(', ');
     //var arrayLongitud = req.body.longitd.split(', ');
 
-    const Zone = new Zone({
+    const newZone = new Zone({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
         arrayLat: arrayLatitud,
@@ -35,7 +35,7 @@ exports.zones_create_zone = (req, res, next) => {
         building: req.body.building,
         level: req.body.level
     });
-    Zone
+    newZone
         .save()
         .then(result => {
             console.log(result);

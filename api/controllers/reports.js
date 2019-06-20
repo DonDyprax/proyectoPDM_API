@@ -25,7 +25,7 @@ exports.reports_get_all = (req, res, next) => {
 };
 
 exports.reports_create_report = (req, res, next) => {
-    const Report = new Report({
+    const newReport = new Report({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
         danger: req.body.danger,
@@ -39,7 +39,7 @@ exports.reports_create_report = (req, res, next) => {
         level: req.body.level,
         image: req.body.image
     });
-    Report
+    newReport
         .save()
         .then(result => {
             console.log(result);
