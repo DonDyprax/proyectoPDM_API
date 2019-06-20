@@ -32,7 +32,7 @@ exports.zones_create_zone = (req, res, next) => {
         name: req.body.name,
         arrayLat: arrayLatitud,
         arrayLng: arrayLongitud,
-        edifice: req.body.edifice,
+        building: req.body.building,
         level: req.body.level
     });
     Zone
