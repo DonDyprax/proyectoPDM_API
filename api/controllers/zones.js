@@ -24,14 +24,16 @@ exports.zones_get_all = (req, res, next) => {
 };
 
 exports.zones_create_zone = (req, res, next) => {
-    //var arrayLatitud = req.body.latitud.split(', ');
-    //var arrayLongitud = req.body.longitd.split(', ');
+    var arrayLatitud = req.body.latitud.split(', ');
+    var arrayLongitud = req.body.longitd.split(', ');
 
     const newZone = new Zone({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
-        arrayLat: req.body.latitud,
-        arrayLng: req.body.longitud,
+        //arrayLat: req.body.latitud,
+        //arrayLng: req.body.longitud,
+        arrayLat: arrayLatitud,
+        arrayLng: arrayLongitud,
         building: req.body.building,
         level: req.body.level
     });
