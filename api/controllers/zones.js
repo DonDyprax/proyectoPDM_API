@@ -24,8 +24,8 @@ exports.zones_get_all = (req, res, next) => {
 };
 
 exports.zones_create_zone = (req, res, next) => {
-    var arrayLatitud = req.body.latitud.split(', ');
-    var arrayLongitud = req.body.longitd.split(', ');
+    //var arrayLatitud = req.body.latitud.split(', ');
+    //var arrayLongitud = req.body.longitd.split(', ');
 
     const Zone = new Zone({
         _id: new mongoose.Types.ObjectId(),
