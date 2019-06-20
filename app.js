@@ -15,7 +15,8 @@ const zoneRoutes = require('./api/routes/zones');
 
 //mongodb+srv://conia:conia123@cluster0-mgdsl.mongodb.net/conia?retryWrites=true
 
-mongoose.connect('mongodb://localhost/safeUCA',
+//mongoose.connect('mongodb://localhost/safeUCA',
+mongoose.connect('mongodb+srv://dondyprax:' + process.env.MONGO_ATLAS_PW + '@parcialpdm-2pguk.mongodb.net/test?retryWrites=true&w=majority',
     {
         useNewUrlParser:true,
         useCreateIndex: true,
