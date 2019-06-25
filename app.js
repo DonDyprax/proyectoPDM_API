@@ -3,11 +3,16 @@ const app = express();
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+const path = require('path');
 
+const indexRoutes = require('./api/routes/index');
 const reportRoutes = require('./api/routes/reports');
 const userRoutes = require('./api/routes/user');
 const roleRoutes = require('./api/routes/roles');
 const zoneRoutes = require('./api/routes/zones');
+
+app.set('views', path.join(__dirname, './api/views'));
+app.set('view engine', 'ejs');
 
 //mongoose.Promise = global.Promise;
 
@@ -47,6 +52,7 @@ app.use((req, res, next) => {
     next();
 })
 
+app.use('/', indexRoutes);
 app.use('/zones', zoneRoutes);
 app.use('/roles', roleRoutes);
 app.use('/reports', reportRoutes);
