@@ -76,11 +76,12 @@ exports.zones_get_zone = (req, res, next) => {
 };
 
 exports.zones_delete_zone = (req, res, next) => {
-    const id = req.body.zoneId;
-    Zone.remove({_id: id})
+    const id = req.params.zoneId;
+    Zone.deleteOne({_id: id})
         .exec()
         .then(result => {
-            res.status(200).json(result);
+            //res.status(200).json(result);
+            res.redirect('/');
         })
         .catch(err => {
             console.log(err);
