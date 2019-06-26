@@ -24,43 +24,43 @@
                         <form action="/reports" method="POST">
 
                             <div class="form-group">
-                                <input type="text" name="name" placeholder="Name" class="form-control">
+                                <input type="text" name="name" placeholder="Name" class="form-control" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="number" name="danger" placeholder="Danger" class="form-control">
+                                <input type="text" name="danger" placeholder="Danger" class="form-control" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" name="type" placeholder="Type" class="form-control">
+                                <input type="text" name="type" placeholder="Type" class="form-control" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" name="status" placeholder="Status" class="form-control">
+                                <input type="text" name="status" placeholder="Status" class="form-control" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" name="mailUser" placeholder="User Email" class="form-control">
+                                <input type="text" name="mailUser" placeholder="User Email" class="form-control" required>
                             </div>
 
                             <div class="form-group">
-                                <textarea name="description" placeholder="Description" cols="30" rows="5" class="form-control"></textarea>
+                                <textarea name="description" placeholder="Description" cols="30" rows="5" class="form-control" required></textarea>
                             </div>
 
                             <div class="form-group">
-                                <input type="number" name="lat" placeholder="Latitude" class="form-control">
+                                <input type="number" name="lat" placeholder="Latitude" class="form-control" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="number" name="ltn" placeholder="Longitude" class="form-control">
+                                <input type="number" name="ltn" placeholder="Longitude" class="form-control" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" name="idZone" placeholder="ID de la Zona" class="form-control">
+                                <input type="text" name="idZone" placeholder="ID de la Zona" class="form-control" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="number" name="level" placeholder="Level" class="form-control">
+                                <input type="number" name="level" placeholder="Level" class="form-control" required>
                             </div>
 
                             <div class="form-group">
@@ -107,8 +107,8 @@
                                     <%= reports[i].idZone %>
                                 </td>
                                 <td>
-                                    <a href="/reports/delete/<% reports[i]._id %>" class="btn btn-danger mb-1">Delete</a>
-                                    <a href="" class="btn btn-info">Edit</a>
+                                    <a href="/reports/delete/<%= reports[i]._id %>" class="btn btn-danger mb-1">Delete</a>
+                                    <a href="/reports/edit/<%= reports[i]._id %>" class="btn btn-info">Edit</a>
                                 </td>
                             </tr>
                         <% } %>
