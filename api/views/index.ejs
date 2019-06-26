@@ -8,14 +8,112 @@
 
     <!-- Bootstrap 4 CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        .tableFixHeadZones          { position: relative; height: 350px; overflow: auto;}
+        .tableFixHeadReports        { position: relative; height: 750px; overflow: auto;}
+        .tableFixHeadwrapper        { display: block; }
+    </style>
 </head>
 <body>
     
     <nav class="navbar navbar-dark bg-dark mb-4">
         <a href="/" class="navbar-brand">SafeUCA</a>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a href="#zones" class="nav-link">Zones</a>
+            </li>
+            <li class="nav-item">
+                    <a href="#reports" class="nav-link">Reports</a>
+            </li>
+        </ul>
     </nav>
 
-    <div class="container">
+    <div class="container-fluid mb-4">
+        <h2 id="zones">Zones</h2>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/zones" method="POST">
+
+                            <div class="form-group">
+                                <input type="text" name="name" placeholder="Name" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" name="latitud" placeholder="Latitud" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" name="longitud" placeholder="Longitud" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" name="building" placeholder="Building" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" name="level" placeholder="Level" class="form-control" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block">
+                                Add
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9 tableFixHeadZones tableFixHeadwrapper">
+                <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Zone ID</th>
+                                <th>Latitude</th>
+                                <th>Longitude</th>
+                                <th>Building</th>
+                                <th>Level</th>
+                                <th>Operation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(var i = 0; i < zones.length; i++) {%>
+                                <tr>
+                                    <td>
+                                        <%= zones[i].name %>
+                                    </td>
+                                    <td>
+                                        <%= zones[i]._id %>
+                                    </td>
+                                    <td>
+                                        <%= zones[i].arrayLat %>
+                                    </td>
+                                    <td>
+                                        <%= zones[i].arrayLng %>
+                                    </td>
+                                    <td>
+                                        <%= zones[i].building %>
+                                    </td>
+                                    <td>
+                                        <%= zones[i].level %>
+                                    </td>
+                                    <td>
+                                        <a href="/zones/delete/<%= zones[i]._id %>" class="btn btn-danger mb-1">Delete</a>
+                                        <a href="/zones/edit/<%= zones[i]._id %>" class="btn btn-info">Edit</a>
+                                    </td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid">
+        <h2 id="reports">Reports</h2>
         <div class="row">
             <!-- FORM -->
             <div class="col-md-3">
@@ -63,10 +161,6 @@
                                 <input type="number" name="level" placeholder="Level" class="form-control" required>
                             </div>
 
-                            <div class="form-group">
-                                <input type="file" name="image" accept="image/png, image/jpeg" placeholder="Image" class="form-control">
-                            </div>
-
                             <button type="submit" class="btn btn-primary btn-block">
                                 Add
                             </button>
@@ -76,12 +170,12 @@
                 </div>
             </div>
             <!-- LIST -->
-            <div class="col-md-9">
+            <div class="col-md-9 tableFixHeadReports tableFixHeadwrapper">
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>Report ID</th>
                             <th>Name</th>
+                            <th>Report ID</th>
                             <th>Danger</th>
                             <th>Status</th>
                             <th>Zone ID</th>
@@ -92,10 +186,10 @@
                         <% for(var i = 0; i < reports.length; i++) {%>
                             <tr>
                                 <td>
-                                    <%= reports[i]._id %>
+                                    <%= reports[i].name %>
                                 </td>
                                 <td>
-                                    <%= reports[i].name %>
+                                    <%= reports[i]._id %>
                                 </td>
                                 <td>
                                     <%= reports[i].danger %>
@@ -114,10 +208,8 @@
                         <% } %>
                     </tbody>
                 </table>
-
             </div>
         </div>
-
     </div>
 
 </body>
