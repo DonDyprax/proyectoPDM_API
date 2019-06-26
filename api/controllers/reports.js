@@ -36,8 +36,7 @@ exports.reports_create_report = (req, res, next) => {
         lat: req.body.lat,
         ltn: req.body.ltn,
         idZone: req.body.idZone,
-        level: req.body.level,
-        image: req.body.image
+        level: req.body.level
     });
     newReport
         .save()
@@ -78,11 +77,11 @@ exports.reports_get_report = (req, res, next) => {
 };
 
 exports.reports_delete_report = (req, res, next) => {
-    const id = req.body.reportId;
-    Report.remove({_id: id})
+    const id = req.params.reportId;
+    Report.deleteOne({_id: id})
         .exec()
         .then(result => {
-            res.status(200).json(result);
+            //res.status(200).json(result);
             res.redirect('/');
         })
         .catch(err => {

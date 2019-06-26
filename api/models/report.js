@@ -11,8 +11,7 @@ const reportSchema = new mongoose.Schema({
     lat: Number,
     ltn: Number,
     idZone: {type: mongoose.Schema.Types.ObjectId, ref:"Zone"},
-    level: Number,
-    image: String
+    level: Number
 });
 
 module.exports = mongoose.model('Report', reportSchema);
