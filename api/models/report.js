@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const reportSchema = new mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     name: String,
-    danger: Number,
+    danger: String,
     type: String,
     status: String,
     mailUser: String,

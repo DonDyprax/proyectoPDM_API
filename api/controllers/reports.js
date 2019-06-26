@@ -83,6 +83,7 @@ exports.reports_delete_report = (req, res, next) => {
         .exec()
         .then(result => {
             res.status(200).json(result);
+            res.redirect('/');
         })
         .catch(err => {
             console.log(err);

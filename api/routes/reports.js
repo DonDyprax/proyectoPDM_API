@@ -14,6 +14,6 @@ router.post('/', ReportsController.reports_create_report);
 
 router.get('/:reportId', ReportsController.reports_get_report);
 
-router.delete('/:reportId', ReportsController.reports_delete_report);
+router.get('delete/:reportId', ReportsController.reports_delete_report);
 
 module.exports = router;
