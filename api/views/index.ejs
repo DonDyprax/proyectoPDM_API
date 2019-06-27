@@ -72,7 +72,7 @@
                         </thead>
                         <tbody>
                             <% for(var i = 0; i < zones.length; i++) {%>
-                                <% if zones[i]._id != 5d13aa0b5003f10017fb2cc0 { %>
+                                <% if(zones[i]._id !== 5d13aa0b5003f10017fb2cc0) { %>
                                     <tr>
                                         <td>
                                             <%= zones[i].name %>
