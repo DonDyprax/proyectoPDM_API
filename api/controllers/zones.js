@@ -88,3 +88,25 @@ exports.zones_delete_zone = (req, res, next) => {
             res.status(500).json({error: err});
         });
 };
+
+exports.zones_update_zone = (req, res, next) => {
+    const id = req.params.zoneId
+    Zone.update(
+        {_id: id},
+        {
+            name: req.body.name,
+            arrayLat: req.body.latitud,
+            arrayLng: req.body.longitud,
+            building: req.body.building,
+            level: req.body.level
+        })
+    .exec()
+    .then(result => {
+        //res.status(200).json(result);
+        res.redirect('/');
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({error: err});
+    });
+}

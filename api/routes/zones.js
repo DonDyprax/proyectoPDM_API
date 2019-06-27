@@ -18,10 +18,13 @@ router.get('/:zoneId', ZonesController.zones_get_zone);
 
 router.get('/delete/:zoneId', ZonesController.zones_delete_zone);
 
-router.get('edit/:zoneId', (req, res, next) => {
-    const {id} = req.params.zoneId
-    const zone = Zone.findById(id);
-    res.render('edit', {
+router.post('/update/:zoneId', )
+
+router.get('/edit/:zoneId', (req, res, next) => {
+    const id = req.params.zoneId
+    const zone = Zone.findOne({_id: id});
+    res.render('editZone', {
+        id,
         zone
     });
 });

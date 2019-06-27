@@ -72,30 +72,32 @@
                         </thead>
                         <tbody>
                             <% for(var i = 0; i < zones.length; i++) {%>
-                                <tr>
-                                    <td>
-                                        <%= zones[i].name %>
-                                    </td>
-                                    <td>
-                                        <%= zones[i]._id %>
-                                    </td>
-                                    <td>
-                                        <%= zones[i].arrayLat %>
-                                    </td>
-                                    <td>
-                                        <%= zones[i].arrayLng %>
-                                    </td>
-                                    <td>
-                                        <%= zones[i].building %>
-                                    </td>
-                                    <td>
-                                        <%= zones[i].level %>
-                                    </td>
-                                    <td>
-                                        <a href="/zones/delete/<%= zones[i]._id %>" class="btn btn-danger mb-1">Delete</a>
-                                        <a href="/zones/edit/<%= zones[i]._id %>" class="btn btn-info">Edit</a>
-                                    </td>
-                                </tr>
+                                <% if zones[i]._id != 5d13aa0b5003f10017fb2cc0 { %>
+                                    <tr>
+                                        <td>
+                                            <%= zones[i].name %>
+                                        </td>
+                                        <td>
+                                            <%= zones[i]._id %>
+                                        </td>
+                                        <td>
+                                            <%= zones[i].arrayLat %>
+                                        </td>
+                                        <td>
+                                            <%= zones[i].arrayLng %>
+                                        </td>
+                                        <td>
+                                            <%= zones[i].building %>
+                                        </td>
+                                        <td>
+                                            <%= zones[i].level %>
+                                        </td>
+                                        <td>
+                                            <a href="/zones/delete/<%= zones[i]._id %>" class="btn btn-danger mb-1">Delete</a>
+                                            <a href="/zones/edit/<%= zones[i]._id %>" class="btn btn-info">Edit</a>
+                                        </td>
+                                    </tr>
+                                <% } %>
                             <% } %>
                         </tbody>
                     </table>
