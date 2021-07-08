@@ -32,6 +32,7 @@ exports.reports_create_report = (req, res, next) => {
         type: req.body.type,
         status: req.body.status,
         mailUser: req.body.mailUser,
+        image: req.body.image,
         description: req.body.description,
         lat: req.body.lat,
         ltn: req.body.ltn,

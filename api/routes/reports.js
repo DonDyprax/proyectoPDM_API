@@ -18,7 +18,7 @@ router.get('/:reportId', ReportsController.reports_get_report);
 
 router.get('/delete/:reportId', ReportsController.reports_delete_report);
 
-router.get('edit/:reportId', (req, res, next) => {
+router.get('/edit/:reportId', (req, res, next) => {
     const {id} = req.params.reportId
     const report = Report.findById(id);
     res.render('edit', {

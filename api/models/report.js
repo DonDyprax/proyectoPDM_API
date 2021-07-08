@@ -7,6 +7,7 @@ const reportSchema = new mongoose.Schema({
     type: String,
     status: String,
     mailUser: String,
+    image: String,
     description: String,
     lat: Number,
     ltn: Number,
