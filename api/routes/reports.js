@@ -14,6 +14,10 @@ router.get('/', ReportsController.reports_get_all);
 
 router.post('/', ReportsController.reports_create_report);
 
+router.put('/:reportId', (req, res, next) => {
+    Report.findByIdAndUpdate(req.params.reportId, req.body, { new: true });
+});
+
 router.get('/:reportId', ReportsController.reports_get_report);
 
 router.get('/delete/:reportId', ReportsController.reports_delete_report);
