@@ -15,7 +15,7 @@ router.get('/', ReportsController.reports_get_all);
 router.post('/', ReportsController.reports_create_report);
 
 router.put('/:reportId', (req, res, next) => {
-    Report.findByIdAndUpdate(req.params.reportId, req.body, { new: true });
+    Report.findByIdAndUpdate(req.params.reportId, req.body, { new: false });
 });
 
 router.get('/:reportId', ReportsController.reports_get_report);
